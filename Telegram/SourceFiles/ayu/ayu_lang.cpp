@@ -47,7 +47,7 @@ AyuLanguage *AyuLanguage::currentInstance() {
 }
 
 QString AyuLanguage::getCacheDir() const {
-	return cWorkingDir() + u"tdata/ayu/languages/"_q;
+	return cWorkingDir() + u"tdata/vellor/languages/"_q;
 }
 
 QString AyuLanguage::getCachePath(const QString &langId) const {

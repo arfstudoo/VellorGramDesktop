@@ -1,9 +1,9 @@
-#define MyAppShortName "AyuGram"
-#define MyAppName "AyuGram Desktop"
-#define MyAppPublisher "Radolyn Labs"
-#define MyAppURL "https://github.com/AyuGram"
-#define MyAppExeName "AyuGram.exe"
-#define MyAppId "53F49750-6209-4FBF-9CA8-7A333C87D666"
+#define MyAppShortName "VellorGram"
+#define MyAppName "VellorGram Desktop"
+#define MyAppPublisher "VellorGram Team"
+#define MyAppURL "https://github.com/arfstudoo/VellorGramDesktop"
+#define MyAppExeName "VellorGram.exe"
+#define MyAppId "C8F2B140-5A92-4C1F-9E6D-7B58D8D34901"
 #define CurrentYear GetDateTimeString('yyyy','','')
 
 [Setup]
@@ -38,11 +38,11 @@ SignTool=sha256
 
 #ifndef MyOutputBaseFilename
   #if MyBuildTarget == "winarm"
-    #define MyOutputBaseFilename "ayusetup-arm64." + MyAppVersionFull
+    #define MyOutputBaseFilename "vellorsetup-arm64." + MyAppVersionFull
   #elif MyBuildTarget == "win64"
-    #define MyOutputBaseFilename "ayusetup-x64." + MyAppVersionFull
+    #define MyOutputBaseFilename "vellorsetup-x64." + MyAppVersionFull
   #else
-    #define MyOutputBaseFilename "ayusetup." + MyAppVersionFull
+    #define MyOutputBaseFilename "vellorsetup." + MyAppVersionFull
   #endif
 #endif
 OutputBaseFilename={#MyOutputBaseFilename}

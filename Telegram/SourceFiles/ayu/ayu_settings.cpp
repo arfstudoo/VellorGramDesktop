@@ -29,7 +29,14 @@ using json = nlohmann::json;
 namespace {
 
 std::string getSettingsPath() {
-	return (cWorkingDir() + u"tdata/ayu_settings.json"_q).toStdString();
+	const auto newPath = cWorkingDir() + u"tdata/vellor_settings.json"_q;
+	if (!QFile::exists(newPath)) {
+		const auto oldPath = cWorkingDir() + u"tdata/ayu_settings.json"_q;
+		if (QFile::exists(oldPath)) {
+			QFile::copy(oldPath, newPath);
+		}
+	}
+	return newPath.toStdString();
 }
 
 void repaintApp() {

@@ -1,154 +1,49 @@
-# AyuGram
+# VellorGram Desktop
 
-![AyuGram Лого](.github/AyuGram.png) ![AyuChan](.github/AyuChan.png)
+<p align="center">
+  <img src=".github/VellorGram.png" width="160" height="160" alt="VellorGram Logo" />
+</p>
 
-[ [English](README.md)  | Русский ]
+<p align="center">
+  <b>Кастомный форк Telegram Desktop с расширенными возможностями приватности, кастомизации и фирменным стилем.</b>
+</p>
 
-## Функции и Фишки
+<p align="center">
+  [ <a href="README.md">English</a> | <b>Русский</b> ]
+</p>
 
-- Полный режим призрака (настраиваемый)
-- История удалений и изменений сообщений
-- Кастомизация шрифта
-- Режим Стримера
-- Локальный телеграм премиум
-- Переводчик
-- Превью медиа и быстрая реакция при сильном нажатии на тачпад (macOS)
-- Улучшенный вид
+---
 
-И многое другое. Посмотрите нашу [Документацию](https://docs.ayugram.one/desktop/) для более подробной информации.
+## Особенности VellorGram
 
-<h3>
-  <details>
-    <summary>Превью</summary>
-    <table>
-      <tr>
-        <td><img src='.github/demos/demo1.png' width='268' alt='Preferences'></td>
-        <td><img src='.github/demos/demo2.png' width='268' alt='AyuGram Options'></td>
-        <td><img src='.github/demos/demo3.png' width='268' alt='Message Filters'></td>
-      </tr>
-      <tr>
-        <td><img src='.github/demos/demo4.png' width='268' alt='Appearance'></td>
-        <td><img src='.github/demos/demo5.png' width='268' alt='Chats'></td>
-      </tr>
-    </table>
-  </details>
-</h3>
+- **Фирменный дизайн**: красно-чёрная градиентная эстетика и глубокая кастомизация оформления.
+- **Полный Ghost Mode (Режим призрака)**:
+  - Чтение сообщений без отправки статуса прочтения собеседнику.
+  - Скрытие статуса набора текста («печатает...», «записывает голосовое...»).
+  - Скрытие статуса онлайн (оффлайн режим).
+  - Скрытный просмотр историй (Stories Stealth Mode).
+- **История сообщений (Message Spy)**:
+  - Сохранение удалённых сообщений с пометкой и временем удаления.
+  - Просмотр истории изменений отредактированных сообщений.
+  - Сохранение самоуничтожающихся (таймерных) фото и видео.
+- **Обход ограничений**:
+  - Сохранение и пересылка медиафайлов из закрытых каналов с защитой от копирования (`noforwards`).
+  - Возможность делать скриншоты без ограничений.
+  - Отключение рекламы Telegram.
+- **Утилиты и инструменты**:
+  - Быстрый просмотр ID, датацентра и даты регистрации.
+  - Фильтры сообщений по регулярным выражениям (RegEx).
+  - Режим стримера для скрытия конфиденциальных данных.
 
-## Установка
+---
 
-### Windows
+## Репозиторий проекта
 
-#### Официальная версия
+- **Исходный код**: [https://github.com/arfstudoo/VellorGramDesktop](https://github.com/arfstudoo/VellorGramDesktop)
+- **Релизы**: [https://github.com/arfstudoo/VellorGramDesktop/releases](https://github.com/arfstudoo/VellorGramDesktop/releases)
 
-Вы можете скачать готовый бинарный файл со вкладки [Releases](https://github.com/AyuGram/AyuGramDesktop/releases) или из
-[Телеграм канала](https://t.me/AyuGramReleases).
+---
 
-#### Winget
+## Лицензия
 
-```bash
-winget install RadolynLabs.AyuGramDesktop
-```
-
-#### Scoop
-
-```bash
-scoop bucket add extras
-scoop install ayugram
-```
-
-#### Сборка вручную
-
-Следуйте [официальному руководству](https://github.com/AyuGram/AyuGramDesktop/blob/dev/docs/building-win-x64.md), если
-вы хотите собрать AyuGram сами.
-
-### macOS
-
-#### Официальная версия
-
-Вы можете скачать подписанный пакет со вкладки [Releases](https://github.com/AyuGram/AyuGramDesktop/releases).
-
-#### Homebrew
-
-```bash
-brew install --cask ayugram
-```
-
-### Arch Linux
-
-#### Из исходников (рекомендованный способ)
-
-Установите `ayugram-desktop` из [AUR](https://aur.archlinux.org/packages/ayugram-desktop).
-
-#### Готовые бинарники
-
-Установите `ayugram-desktop-bin` из [AUR](https://aur.archlinux.org/packages/ayugram-desktop-bin).
-
-Примечание: данный пакет собирается не нами.
-
-### NixOS
-
-#### Флейк (рекомендуется)
-
-Установите `ayugram-desktop` из [ndfined-crp/ayugram-desktop](https://github.com/ndfined-crp/ayugram-desktop)
-
-#### Nixpkgs
-
-Установите `ayugram-desktop` из [nixpkgs](https://search.nixos.org/packages?channel=unstable&show=ayugram-desktop)
-
-### ALT Linux
-
-[Sisyphus](https://packages.altlinux.org/en/sisyphus/srpms/ayugram-desktop/)
-
-### Gentoo Linux
-
-Инструкцию по установке можно найти в [этом репозитории](https://codeberg.org/OverLessArtem/ayugram-ebuild-gentoo).
-
-### Void Linux
-Инструкцию по установке можно найти в [этом репозитории](https://codeberg.org/OverLessArtem/ayugram-template-void)
-
-### EPM
-
-`epm play ayugram`
-
-### Fedora
-
-Из репозитория [RPM Fusion](https://admin.rpmfusion.org/pkgdb/package/free/ayugram-desktop/).
-
-```bash
-dnf install ayugram-desktop
-```
-
-### Любой другой Линукс дистрибутив
-
-Flatpak: https://github.com/0FL01/AyuGramDesktop-flatpak
-
-Или следуйте [официальному руководству](https://github.com/AyuGram/AyuGramDesktop/blob/dev/docs/building-linux.md).
-
-## Пожертвования
-
-Вам нравится использовать **AyuGram**? Оставьте нам чаевые!
-
-[Здесь доступные варианты.](https://docs.ayugram.one/donate/)
-
-## Использованные материалы
-
-### Телеграм клиенты
-
-- [Telegram Desktop](https://github.com/telegramdesktop/tdesktop)
-- [Kotatogram](https://github.com/kotatogram/kotatogram-desktop)
-- [64Gram](https://github.com/TDesktop-x64/tdesktop)
-- [Forkgram](https://github.com/forkgram/tdesktop)
-
-### Использованные библиотеки
-
-- [JSON for Modern C++](https://github.com/nlohmann/json)
-- [SQLite](https://github.com/sqlite/sqlite)
-- [sqlite_orm](https://github.com/fnc12/sqlite_orm)
-
-### Иконки
-
-- [Solar Icon Set](https://www.figma.com/community/file/1166831539721848736)
-
-### Боты
-
-- [TelegramDB](https://t.me/tgdatabase) для получения юзернейма по ID (до закрытия бесплатной версии 2 апреля 2026)
+Проект распространяется под лицензией **GNU General Public License v3.0** с исключением для OpenSSL. Подробнее см. в файле [LICENSE](LICENSE) и [LEGAL](LEGAL).
