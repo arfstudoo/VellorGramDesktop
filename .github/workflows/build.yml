@@ -32,9 +32,9 @@ jobs:
         with:
           arch: x64
 
-      - name: Cache ThirdParty & Libraries
+      - name: Restore ThirdParty & Libraries Cache
         id: cache-libs
-        uses: actions/cache@v4
+        uses: actions/cache/restore@v4
         with:
           path: |
             ..\Libraries
@@ -44,11 +44,21 @@ jobs:
             vellor-libs-win64-
 
       - name: Prepare dependencies
+        if: steps.cache-libs.outputs.cache-hit != 'true'
         run: |
           cd Telegram\build\prepare
           python prepare.py silent
         env:
           Platform: x64
+
+      - name: Save ThirdParty & Libraries Cache
+        if: steps.cache-libs.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ..\Libraries
+            ..\ThirdParty
+          key: ${{ steps.cache-libs.outputs.cache-primary-key }}
 
       - name: Configure CMake
         run: |
