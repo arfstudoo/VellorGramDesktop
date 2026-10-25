@@ -272,7 +272,7 @@ std::vector<EmbeddedScheme> EmbeddedThemes() {
 			qColor("5ca7d4"),
 			name(tr::lng_settings_theme_tinted),
 			":/gui/night.tdesktop-theme",
-			qColor("5288c1")
+			qColor("ea1d45")
 		},
 		EmbeddedScheme{
 			EmbeddedType::NightGreen,
@@ -317,6 +317,7 @@ std::vector<QColor> DefaultAccentColors(EmbeddedType type) {
 		};
 	case EmbeddedType::Night:
 		return {
+			qColor("ea1d45"),
 			qColor("58bfe8"),
 			qColor("466f42"),
 			qColor("aa6084"),
