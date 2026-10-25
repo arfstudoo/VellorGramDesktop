@@ -1,0 +1,82 @@
+name: Build VellorGram Windows
+
+on:
+  push:
+    branches: [ dev, master ]
+  workflow_dispatch:
+
+jobs:
+  build-windows:
+    name: Build Windows x64
+    runs-on: windows-2022
+    timeout-minutes: 360
+
+    defaults:
+      run:
+        shell: cmd
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Set up MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+        with:
+          arch: x64
+
+      - name: Cache ThirdParty & Libraries
+        id: cache-libs
+        uses: actions/cache@v4
+        with:
+          path: |
+            ..\Libraries
+            ..\ThirdParty
+          key: vellor-libs-win64-${{ hashFiles('Telegram/build/prepare/prepare.py') }}
+          restore-keys: |
+            vellor-libs-win64-
+
+      - name: Prepare dependencies
+        run: |
+          cd Telegram\build\prepare
+          python prepare.py silent
+        env:
+          Platform: x64
+
+      - name: Configure CMake
+        run: |
+          cd Telegram
+          call configure.bat x64 -D TDESKTOP_API_ID=2040 -D TDESKTOP_API_HASH=b18441a1ff607e10a989891a5462e627 -D CMAKE_CONFIGURATION_TYPES=Release
+
+      - name: Build VellorGram
+        run: |
+          cmake --build out --config Release --target Telegram --parallel
+
+      - name: Prepare Artifact
+        shell: pwsh
+        run: |
+          $outDir = "out/Release"
+          $distDir = "dist/VellorGram"
+          New-Item -ItemType Directory -Force -Path $distDir
+          
+          if (Test-Path "$outDir/VellorGram.exe") {
+            Copy-Item "$outDir/VellorGram.exe" -Destination "$distDir/VellorGram.exe"
+          } elseif (Test-Path "$outDir/Telegram.exe") {
+            Copy-Item "$outDir/Telegram.exe" -Destination "$distDir/VellorGram.exe"
+          }
+          
+          Compress-Archive -Path "$distDir/*" -DestinationPath "dist/VellorGram_Portable_win64.zip"
+
+      - name: Upload VellorGram Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: VellorGram_Portable_win64
+          path: dist/VellorGram_Portable_win64.zip
+          retention-days: 14
